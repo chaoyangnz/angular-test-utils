@@ -2,7 +2,7 @@ import { DeepPartial, PickByValue } from 'utility-types';
 
 export type Type<T> = new (...args: any[]) => T;
 
-type PartialOrPromise<T> = T extends Promise<infer U> ? U : DeepPartial<T> | null;
+type PartialOrPromise<T> = T extends Promise<infer U> ? T : DeepPartial<T> | null;
 
 type PropertyMock<PropertyType> = PropertyType extends (...args: any[]) => any
   ? PropertyType & jest.MockInstance<PartialOrPromise<ReturnType<PropertyType>>, Parameters<PropertyType>>
