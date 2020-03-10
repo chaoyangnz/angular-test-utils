@@ -1,5 +1,9 @@
 # Jest mock extension
 
+## Install
+
+If you are using Jest 23 or lower, please install jest-extension `0.23.x`, otherwise, `0.24.x`.
+
 ## Mock a class
 
 This would be useful in `Angular` and `NestJS` testing.
