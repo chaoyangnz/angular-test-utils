@@ -1,10 +1,10 @@
 {
-  "name": "jest-extension",
+  "name": "@cloudaffine/jest-extension",
   "version": "0.24.0",
   "description": "Jest extension",
   "author": "Chao Yang <chao@yang.to>",
   "license": "MIT",
-  "repository": "git+https://github.com/chaoyangnz/jest-extension.git",
+  "repository": "git+https://github.com/cloudaffine/jest-extension.git",
   "main": "lib/index.js",
   "module": "es/index.js",
   "browser": "dist/bundle.js",
