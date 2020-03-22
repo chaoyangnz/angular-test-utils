@@ -4,14 +4,14 @@ export type Type<T> = new (...args: any[]) => T;
 
 type PartialOrPromise<T> = T extends Promise<infer U> ? T : DeepPartial<T> | null;
 
-type PropertyMock<PropertyType> = PropertyType extends (...args: any[]) => any
-  ? PropertyType & jest.MockInstance<PartialOrPromise<ReturnType<PropertyType>>, Parameters<PropertyType>>
-  : PropertyType;
+type PropertyMock<Property> = Property extends (...args: any[]) => any
+  ? Property & jest.MockInstance<PartialOrPromise<ReturnType<Property>>, Parameters<Property>>
+  : Property;
 
-export type ClassMock<T> = {
-  [K in keyof PickByValue<T, Function>]: PropertyMock<T[K]>;
+export type ClassMock<Class> = {
+  [K in keyof PickByValue<Class, Function>]: PropertyMock<Class[K]>;
 } &
-  T;
+  Class;
 
 export function mockClass<Class>(classType: Type<Class>): Type<ClassMock<Class>> {
   class MockedClass {
