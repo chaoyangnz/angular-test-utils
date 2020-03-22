@@ -1,5 +1,5 @@
 {
-  "name": "jest-extension",
+  "name": "@cloudaffine/jest-extension",
   "version": "0.23.0",
   "description": "Jest extension",
   "author": "Chao Yang <chao@yang.to>",
@@ -10,7 +10,7 @@
   "browser": "dist/bundle.js",
   "types": "dist/bundle.d.ts",
   "scripts": {
-    "build": "npm run build:lib & npm run build:umd",
+    "build": "npm run build:lib",
     "build:lib": "tsc --outDir lib --module commonjs",
     "build:es": "tsc --outDir es --module es2015",
     "build:umd": "npm run build:es && rollup --config && dts-bundle --name dist/bundle --main es --outputAsModuleFolder",
@@ -20,12 +20,12 @@
     "format": "prettier '**/*.{md,js,jsx,json,ts,tsx}' --write",
     "test": "jest --env=jsdom --coverage",
     "test:watch": "jest --env=jsdom --watch --updateSnapshot",
-    "prepublishOnly": "npm run build",
     "prebuild": "npm run clean",
-    "postbuild": "rimraf {lib,es}/**/__tests__ {lib,es}/**/*.{spec,test}.{js,d.ts,js.map}",
+    "postbuild": "rimraf {lib,es}/**/__tests__ {lib,es}/**/*.{spec,test}.{js,d.ts,js.map} && cp -rf package.json lib && cp -rf *.md lib",
     "posttest": "npm run typecheck && npm run lint",
     "preversion": "npm test",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "dist": "npm run build && cd lib && npm publish --access public"
   },
   "keywords": [
     "jest",
@@ -34,9 +34,7 @@
     "utility"
   ],
   "files": [
-    "lib",
-    "es",
-    "dist"
+    "*"
   ],
   "dependencies": {
     "@types/node": "^8.0.0",
