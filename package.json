@@ -1,6 +1,6 @@
 {
-  "name": "@cloudaffine/jest-extension",
-  "version": "0.24.1",
+  "name": "@chaoyangnz/jest-extension",
+  "version": "0.24.2",
   "description": "Jest extension",
   "author": "Chao Yang <chao@yang.to>",
   "license": "MIT",
